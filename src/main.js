@@ -5,6 +5,7 @@ import App from './App'
 import router from './router'
 import Vant from 'vant'
 import 'vant/lib/index.css'
+import './assets/albb_font/iconfont.css'
 
 Vue.use(Vant);
 
