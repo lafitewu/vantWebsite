@@ -41,6 +41,17 @@
             img(src="@/assets/images/home_default_header_3.png")
         .middle_list_pic
           img(src="@/assets/images/home_bg_img_show_3.png")
+      .middle_look
+        .look_frist
+          a(href="#")
+            img(src="@/assets/images/home_illustrator_img_show_1.png")
+          a(href="#")
+            img(src="@/assets/images/home_illustrator_img_show_2.png")
+        .look_second
+          img(src="@/assets/images/home_illustrator_img_show_3.png")
+        .look_more 
+          | 查看更多
+          i(class="iconfont iconicon_common_icon_home_turn_in")
 </template>
 <script>
 export default {
@@ -179,6 +190,54 @@ export default {
         }
         .middle_list2 {
           margin-top: 5vw;
+        }
+        .middle_look {
+          width: 90%;
+          height: 98vw;
+          // background: red;
+          margin: auto;
+          margin-top: 6vw;
+          border-top: 1px solid #eee;
+          .look_frist {
+            width: 100%;
+            height: 24vw;
+            margin-top: 6vw;
+            a {
+              float: left;
+              display: block;
+              width: 47.5%;
+              height: 100%;
+              img {
+                width: 100%;
+                height: 100%;
+                border-radius: 3vw;
+              }
+              &:nth-of-type(2) {
+                float: right;
+              }
+            }
+          }
+          .look_second {
+            width: 100%;
+            height: 50vw;
+            margin-top: 3.5vw;
+            background: #676B78;
+            img {
+              width: 100%;
+              height: 100%;
+              border-radius: 5vw;
+            }
+          }
+          .look_more {
+            float: right;
+            width: 30%;
+            font-size: 3.7vw;
+            color: #242837;
+            text-align: right;
+            margin-top: 5vw;
+            letter-spacing: 1.11px;
+            cursor: pointer;
+          }
         }
       }
     }
