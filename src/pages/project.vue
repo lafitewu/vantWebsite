@@ -1,10 +1,8 @@
 <template lang="pug">
-  .home
+  .project
     .middle
       .middle_username
-        .user_left_pic
-          img(src="@/assets/images/logo.png")
-        .user_left_name 开斌Liu
+        .user_left_name 项目
         .user_left_info {{info}}
       .middle_list
         .middle_list_top
@@ -85,7 +83,7 @@ export default {
 }
 </script>
 <style lang="less" scoped>
-    .home {
+    .project {
       position: relative;
       width: 100%;
       background: #F3F4F6;
