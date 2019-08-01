@@ -9,7 +9,7 @@
       position="right"
       :style="{ width: '55%',height: '100%' }"
     )
-      .alert_main
+      .alert_main(@click="popupShow=false")
         router-link(to="/") 首页
         router-link(to="/project") 项目
         router-link(to="/other") 其他

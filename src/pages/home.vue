@@ -16,7 +16,7 @@
             img(src="@/assets/images/home_default_header_1.png")
         .middle_list_pic
           video(src="http://clips.vorwaerts-gmbh.de/big_buck_bunny.mp4" controls="controls" poster="@/assets/images/home_bg_img_show_1.png")
-      .middle_list.middle_list2
+      .middle_list.middle_list2(@click="goDetailFn")
         .middle_list_top
           .list_top_left
             .top_left_main
@@ -26,7 +26,7 @@
             img(src="@/assets/images/home_default_header_2.png")
         .middle_list_pic
             img(src="@/assets/images/home_bg_img_show_2.png")
-      .middle_list.middle_list2
+      .middle_list.middle_list2(@click="goDetailFn")
         .middle_list_top
           .list_top_left
             .top_left_main
@@ -38,24 +38,24 @@
           img(src="@/assets/images/home_bg_img_show_3.png")
       .middle_look
         .look_frist
-          a(href="#")
+          router-link(to="/project_details")
             img(src="@/assets/images/home_illustrator_img_show_1.png")
-          a(href="#")
+          router-link(to="/project_details")
             img(src="@/assets/images/home_illustrator_img_show_2.png")
         .look_second
-          img(src="@/assets/images/home_illustrator_img_show_3.png")
+          img(src="@/assets/images/home_illustrator_img_show_3.png" @click="goDetailFn")
         .look_more 
           | 查看更多
           i(class="iconfont iconicon_common_icon_home_turn_in")
       .middle_file
         .look_file 
-          .look_file_list
+          .look_file_list(@click="goDetailFn")
             img(src="@/assets/images/icon_common_icon_folder_yellow.png")
             span 关于弹窗规范的总结
-          .look_file_list
+          .look_file_list(@click="goDetailFn")
             img(src="@/assets/images/icon_common_icon_folder_green.png")
             span 关于弹窗规范的总结
-          .look_file_list
+          .look_file_list(@click="goDetailFn")
             img(src="@/assets/images/icon_common_icon_folder_blue.png")
             span 关于弹窗规范的总结
           .look_file_more 
@@ -78,8 +78,8 @@ export default {
     }
   },
   methods: {
-    showPopup() {
-      this.popupShow = true
+    goDetailFn() {
+      this.$router.push('/project_details')
     }
   }
 }

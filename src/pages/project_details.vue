@@ -1,25 +1,23 @@
 <template lang="pug">
   .project
     .middle
+      .middle_username
+        .user_left_name 项目的名称
+        .user_left_info {{info}}
       van-list(
         v-model="loading"
         :finished="finished"
+        finished-text="没有更多了"
         @load="onLoad")
-        .middle_list.middle_list2(
-          @click="goDetailFn"
+        .middle_pic(
           v-for="item in list"
           :key="item"
           :title="item"
         )
-          .middle_list_top
-            .list_top_left
-              .top_left_main
-                .left_main_title 项目{{item}}名称
-                .left_main_info 项目{{item}}简单介绍
-            .list_top_right
-              img(src="@/assets/images/home_default_header_2.png")
-          .middle_list_pic
-              img(src="@/assets/images/home_bg_img_show_2.png")
+          .middle_pic_title 标题{{item}}
+          .middle_pic_info 模块{{item}}简单介绍
+          .middle_pic_main
+            img(src="@/assets/images/pro_detail_page_1.png")
       .footer_font {{footerFont}}
 </template>
 <script>
@@ -35,8 +33,8 @@ export default {
     }
   },
   methods: {
-    goDetailFn() {
-      this.$router.push('/project_details')
+    showPopup() {
+      this.popupShow = true
     },
     onLoad() {
       // 异步更新数据
@@ -89,71 +87,34 @@ export default {
             text-indent: 5vw;
           }
         }
-        // card列表
-        .middle_list {
+        .middle_pic {
           width: 90%;
-          height: 78vw;
-          background: white;
+          height: 79.5vw;
           margin: auto;
-          border-radius: 3vw;
-          .middle_list_top {
-            width: 100%;
-            height: 23vw;
-            border-bottom: 1px solid #eee;
-            .list_top_left {
-              float: left;
-              width: 86%;
-              height: 100%;
-              border-right: 1px solid #eee;
-              .top_left_main {
-                width: 90%;
-                height: 100%;
-                margin: auto;
-                .left_main_title {
-                  font-size: 4vw;
-                  color: #242837;
-                  padding-top: 3vw;
-                  letter-spacing: 1.29px;
-                }
-                .left_main_info {
-                  color: #676B78;
-                  letter-spacing: 0.94px;
-                  font-size: 3.2vw;
-                  margin-top: 2vw;
-                }
-              }
-            }
-            .list_top_right {
-              float: right;
-              width: 12%;
-              height: 100%;
-              line-height: 30vw;
-              img {
-                width: 80%;
-              }
-            }
+          margin-top: 11vw;
+          .middle_pic_title {
+            font-size: 3.5vw;
+            font-weight: bold;
+            color: #242837;
+            letter-spacing: 0.5px;
+            text-indent: 5vw;
           }
-          .middle_list_pic {
-            width: 90%;
-            height: 48vw;
-            margin: 3.5vw auto;
-            border-radius: 3vw;
-            overflow: hidden;
-            video {
-              width: 100%;
-              height: 100%;
-              // border-radius: 3vw;
-            }
+          .middle_pic_info {
+            font-size: 3vw;
+            color: #676B78;
+            letter-spacing: 0.43px;
+            text-indent: 5vw;
+            margin-top: 1vw;
+          }
+          .middle_pic_main {
+            width: 100%;
+            height: 65vw;
+            margin-top: 4vw;
             img {
               width: 100%;
               height: 100%;
             }
           }
-        }
-        .middle_list2 {
-          position: relative;
-          top: 5vw;
-          margin-top: 5vw;
         }
         // 谢语
         .footer_font {
@@ -166,5 +127,4 @@ export default {
       }
     }
 </style>
-
 
