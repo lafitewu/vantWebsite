@@ -5,13 +5,15 @@
         v-model="loading"
         :finished="finished"
         @load="onLoad")
-        .middle_pic_list(
+        .middle_file_list(
           @click="goDetailFn"
           v-for="item in list"
           :key="item"
           :title="item"
         )
-          img(src="@/assets/images/img_common_show_img_6.png")
+          .middle_file_list_main
+            img(src="@/assets/images/icon_common_icon_folder_yellow.png")
+            .middle_list_main_info 关于banner{{item}}的测试结果(搬运工)
       .footer_font {{footerFont}}
 </template>
 <script>
@@ -58,16 +60,38 @@ export default {
         position: relative;
         width: 100%;
       }
-      .middle_pic_list {
+      .middle_file_list {
         position: relative;
         top: 5vw;
         width: 90%;
-        height: 51vw;
+        height: 50vw;
+        background: white;
         margin: auto;
         margin-top: 5vw;
-        img {
-          width: 100%;
-          height: 100%;
+        border-radius: 3vw;
+        .middle_file_list_main {
+          position: absolute;
+          left: 0;
+          right: 0;
+          top: 0;
+          bottom: 0;
+          width: 92%;
+          height: 90%;
+          margin: auto;
+          border-radius: 2vw;
+          border: 1px solid #F3F4F6;
+          img {
+            width: 17%;
+            margin-left: 41.5%;
+            padding-top: 10vw;
+          }
+          .middle_list_main_info {
+            padding-top: 5vw;
+            font-size: 3.7vw;
+            color: #676B78;
+            letter-spacing: 1.11px;
+            text-align: center;
+          }
         }
       }
       // 谢语

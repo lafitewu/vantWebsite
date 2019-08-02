@@ -80,6 +80,6 @@ export default {
     background: transparent !important;
   }
   .van-popup {
-    background: rgba(0,0,0,.7);
+    background: rgba(0,0,0,.7) !important;
   }
 </style>
