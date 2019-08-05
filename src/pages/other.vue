@@ -61,13 +61,17 @@ export default {
       .middle_pic_list {
         position: relative;
         top: 5vw;
-        width: 90%;
+        width: 92%;
         height: 51vw;
         margin: auto;
         margin-top: 5vw;
         img {
           width: 100%;
           height: 100%;
+          border-radius: 2vw;
+        }
+        &:nth-of-type(1) {
+          margin-top: 0vw;
         }
       }
       // 谢语

@@ -93,6 +93,9 @@ export default {
             text-align: center;
           }
         }
+        &:nth-of-type(1) {
+            margin-top: 0;
+          }
       }
       // 谢语
       .footer_font {

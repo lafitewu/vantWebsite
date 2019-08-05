@@ -5,7 +5,7 @@
         v-model="loading"
         :finished="finished"
         @load="onLoad")
-        .middle_list.middle_list2(
+        .middle_list(
           @click="goDetailFn"
           v-for="item in list"
           :key="item"
@@ -70,7 +70,7 @@ export default {
           position: relative;
           top: 5vw;
           height: 20vw;
-          width: 90%;
+          width: 92%;
           background: white;
           margin: auto;
           border-radius: 3vw;
@@ -91,10 +91,13 @@ export default {
         }
         // card列表
         .middle_list {
-          width: 90%;
+          position: relative;
+          top: 5vw;
+          width: 92%;
           height: 78vw;
           background: white;
           margin: auto;
+          margin-top: 5vw;
           border-radius: 3vw;
           .middle_list_top {
             width: 100%;
@@ -113,6 +116,7 @@ export default {
                   font-size: 4vw;
                   color: #242837;
                   padding-top: 3vw;
+                  font-weight:600;
                   letter-spacing: 1.29px;
                 }
                 .left_main_info {
@@ -129,12 +133,13 @@ export default {
               height: 100%;
               line-height: 30vw;
               img {
-                width: 80%;
+                width: 60%;
+                margin-left: 10%;
               }
             }
           }
           .middle_list_pic {
-            width: 90%;
+            width: 93%;
             height: 48vw;
             margin: 3.5vw auto;
             border-radius: 3vw;
@@ -149,11 +154,9 @@ export default {
               height: 100%;
             }
           }
-        }
-        .middle_list2 {
-          position: relative;
-          top: 5vw;
-          margin-top: 5vw;
+          &:nth-of-type(1) {
+            margin-top: 0; 
+          }
         }
         // 谢语
         .footer_font {

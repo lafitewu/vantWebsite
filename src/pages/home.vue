@@ -96,12 +96,12 @@ export default {
         width: 100%;
         .middle_username {
           height: 35vw;
-          width: 90%;
+          width: 92%;
           // background: white;
           margin: auto;
           .user_left_pic {
-            width: 8vw;
-            height: 8vw;
+            width: 11vw;
+            height: 11vw;
             padding-top: 5vw;
             img {
               width: 100%;
@@ -112,6 +112,7 @@ export default {
           .user_left_name {
             font-size: 4vw;
             color: #242837;
+            font-weight:600;
             letter-spacing: 1.29px;
             margin-top: 2vw;
           }
@@ -124,7 +125,7 @@ export default {
         }
         // card列表
         .middle_list {
-          width: 90%;
+          width: 92%;
           height: 78vw;
           background: white;
           margin: auto;
@@ -146,6 +147,7 @@ export default {
                   font-size: 4vw;
                   color: #242837;
                   padding-top: 3vw;
+                  font-weight:600;
                   letter-spacing: 1.29px;
                 }
                 .left_main_info {
@@ -162,12 +164,13 @@ export default {
               height: 100%;
               line-height: 30vw;
               img {
-                width: 80%;
+                width: 60%;
+                margin-left: 10%;
               }
             }
           }
           .middle_list_pic {
-            width: 90%;
+            width: 93%;
             height: 48vw;
             margin: 3.5vw auto;
             border-radius: 3vw;
@@ -187,7 +190,7 @@ export default {
           margin-top: 5vw;
         }
         .middle_look {
-          width: 90%;
+          width: 92%;
           height: 98vw;
           margin: auto;
           margin-top: 6vw;
@@ -230,11 +233,12 @@ export default {
             text-align: right;
             margin-top: 5vw;
             letter-spacing: 1.11px;
+            font-weight:600;
             cursor: pointer;
           }
         }
         .middle_file {
-          width: 90%;
+          width: 92%;
           margin: auto;
           // 文件列表
           .look_file {
@@ -267,13 +271,14 @@ export default {
               text-align: right;
               margin-top: 1vw;
               letter-spacing: 1.11px;
+              font-weight:600;
               cursor: pointer;
             }
           }
         }
         // 图标列表
         .middle_icon {
-          width: 90%;
+          width: 92%;
           margin: auto;
           .middle_icon_list {
             height: 15vw;

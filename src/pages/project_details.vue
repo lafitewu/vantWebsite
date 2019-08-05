@@ -68,16 +68,17 @@ export default {
           position: relative;
           top: 5vw;
           height: 20vw;
-          width: 90%;
+          width: 92%;
           background: white;
           margin: auto;
           border-radius: 3vw;
           .user_left_name {
-            font-size: 4.5vw;
+            font-size: 4.3vw;
             color: #242837;
             letter-spacing: 0.57px;
             padding-top: 3vw;
             text-indent: 5vw;
+            font-weight:600;
           }
           .user_left_info {
             font-size: 3vw;
@@ -88,13 +89,13 @@ export default {
           }
         }
         .middle_pic {
-          width: 90%;
+          width: 92%;
           height: 79.5vw;
           margin: auto;
-          margin-top: 11vw;
+          margin-top: 5vw;
           .middle_pic_title {
             font-size: 3.5vw;
-            font-weight: bold;
+            font-weight:600;
             color: #242837;
             letter-spacing: 0.5px;
             text-indent: 5vw;
@@ -114,6 +115,9 @@ export default {
               width: 100%;
               height: 100%;
             }
+          }
+          &:nth-of-type(1) {
+            margin-top: 11vw;
           }
         }
         // 谢语

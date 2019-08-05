@@ -41,7 +41,7 @@ export default {
   color: #242837;
   background: white;
   .top_main {
-    width: 90%;
+    width: 92%;
     height: 100%;
     margin: auto;
     // background: red;
@@ -50,7 +50,7 @@ export default {
       width: 30%;
       float: left;
       text-align: left;
-      font-size: 3.7vw;
+      font-size: 4vw;
     }
     .top_right {
       float: right;
@@ -71,6 +71,7 @@ export default {
     letter-spacing: 1.11px;
     font-size: 3.7vw;
     line-height: 12vw;
+    font-weight:600;
   }
 }
 </style>
