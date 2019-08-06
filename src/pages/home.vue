@@ -151,7 +151,7 @@ export default {
                   font-size: 4vw;
                   color: #242837;
                   padding-top: 3vw;
-                  font-weight: middle;
+                  font-weight: bold;
                   letter-spacing: 1.29px;
                 }
                 .left_main_info {

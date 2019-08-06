@@ -270,6 +270,9 @@ export default {
 .van-tab__pane {
   padding-bottom: 10vw;
 }
+.van-tab--active {
+  font-weight: bold !important;
+}
 </style>
 
 
