@@ -1,5 +1,6 @@
 <template lang="pug">
   .project
+    Bread
     .middle
       .middle_username
         .user_left_name 项目的名称
@@ -21,8 +22,10 @@
       .footer_font {{footerFont}}
 </template>
 <script>
+import Bread from "../components/bread"
 export default {
-  name: 'home',
+  components: { Bread },
+  name: 'details',
   data () {
     return {
       info: "项目简单的介绍",
@@ -126,7 +129,7 @@ export default {
           text-align: center;
           color: #676B78;
           letter-spacing: 1.11px;
-          font-size: 3.7vw;
+          font-size: 3vw;
         }
       }
     }

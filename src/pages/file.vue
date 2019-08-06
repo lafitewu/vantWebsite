@@ -1,5 +1,6 @@
 <template lang="pug">
   .file
+    Bread
     .middle
       van-list(
         v-model="loading"
@@ -17,7 +18,10 @@
       .footer_font {{footerFont}}
 </template>
 <script>
+import Bread from "../components/bread"
+
 export default {
+  components: { Bread },
   name: 'file',
   data () {
     return {
@@ -103,7 +107,7 @@ export default {
         text-align: center;
         color: #676B78;
         letter-spacing: 1.11px;
-        font-size: 3.7vw;
+        font-size: 3vw;
       }
     }
 </style>

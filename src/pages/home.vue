@@ -1,5 +1,6 @@
 <template lang="pug">
   .home
+    Bread
     .middle
       .middle_username
         .user_left_pic
@@ -69,7 +70,10 @@
       .footer_font {{footerFont}}
 </template>
 <script>
+import Bread from "../components/bread"
+
 export default {
+  components: { Bread },
   name: 'home',
   data () {
     return {
@@ -136,7 +140,7 @@ export default {
             border-bottom: 1px solid #eee;
             .list_top_left {
               float: left;
-              width: 86%;
+              width: 85%;
               height: 100%;
               border-right: 1px solid #eee;
               .top_left_main {
@@ -147,7 +151,7 @@ export default {
                   font-size: 4vw;
                   color: #242837;
                   padding-top: 3vw;
-                  font-weight:600;
+                  font-weight: middle;
                   letter-spacing: 1.29px;
                 }
                 .left_main_info {
@@ -187,7 +191,7 @@ export default {
           }
         }
         .middle_list2 {
-          margin-top: 5vw;
+          margin-top: 3.5vw;
         }
         .middle_look {
           width: 92%;
@@ -235,6 +239,9 @@ export default {
             letter-spacing: 1.11px;
             font-weight:600;
             cursor: pointer;
+            i {
+              margin-left: 1.5vw;
+            }
           }
         }
         .middle_file {
@@ -273,6 +280,9 @@ export default {
               letter-spacing: 1.11px;
               font-weight:600;
               cursor: pointer;
+              i {
+                margin-left: 1.5vw;
+              }
             }
           }
         }
@@ -305,7 +315,7 @@ export default {
           text-align: center;
           color: #676B78;
           letter-spacing: 1.11px;
-          font-size: 3.7vw;
+          font-size: 3vw;
         }
       }
     }
