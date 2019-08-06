@@ -246,7 +246,7 @@ export default {
 </style>
 <style>
 .van-hairline--top-bottom::after {
-  border: none;
+  border: none !important;
 }
 .van-tabs__wrap {
   z-index: 88;
@@ -259,7 +259,7 @@ export default {
   max-width: 16%;
 }
 .van-tabs__line {
-  background: #242837;
+  background: #242837 !important;
   height: 2px;
   width: 18px !important;
 }
