@@ -25,6 +25,13 @@ export default {
       popupShow: false
     }
   },
+  created() {
+    this.axios.get(this.hostName+'/personal/datas').then((res)=>{
+      this.name = res.data.data[0].logoName
+    }).catch((err)=>{
+      console.error("请联系管理员，开斌刘")
+    })
+  },
   methods: {
     showPopup() {
       this.popupShow = true

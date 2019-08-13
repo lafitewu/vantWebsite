@@ -1,5 +1,5 @@
 <template lang="pug">
-  .project
+  .details
     Bread
     .middle
       .middle_username
@@ -58,7 +58,7 @@ export default {
 }
 </script>
 <style lang="less" scoped>
-    .project {
+    .details {
       position: relative;
       width: 100%;
       background: #F3F4F6;

@@ -4,8 +4,8 @@
     .middle
       .middle_username
         .user_left_pic
-          img(src="@/assets/images/logo.png")
-        .user_left_name 开斌Liu
+          img(:src="headPic")
+        .user_left_name {{userName}}
         .user_left_info {{info}}
       .middle_list
         .middle_list_top
@@ -17,49 +17,34 @@
             img(src="@/assets/images/home_default_header_1.png")
         .middle_list_pic
           video(src="http://clips.vorwaerts-gmbh.de/big_buck_bunny.mp4" controls="controls" poster="@/assets/images/home_bg_img_show_1.png")
-      .middle_list.middle_list2(@click="goDetailFn")
+      .middle_list.middle_list2(@click="goDetailFn" v-for="item in projectArr" :key="item.id")
         .middle_list_top
           .list_top_left
             .top_left_main
-              .left_main_title 固定模块
-              .left_main_info 这是一个短视频，视频全长30s，希望你可以通过这个视频了解我的日常生活
+              .left_main_title {{item.title}}
+              .left_main_info {{item.intro}}
           .list_top_right
-            img(src="@/assets/images/home_default_header_2.png")
+            img(:src="item.icon")
         .middle_list_pic
-            img(src="@/assets/images/home_bg_img_show_2.png")
-      .middle_list.middle_list2(@click="goDetailFn")
-        .middle_list_top
-          .list_top_left
-            .top_left_main
-              .left_main_title 30秒简介
-              .left_main_info 这是一个短视频，视频全长30s，希望你可以通过这个视频了解我的日常生活
-          .list_top_right
-            img(src="@/assets/images/home_default_header_3.png")
-        .middle_list_pic
-          img(src="@/assets/images/home_bg_img_show_3.png")
-      .middle_look
+            img(:src="item.coverPic")
+   
+      .middle_look(v-if="otherArr.length")
         .look_frist
           router-link(to="/project_details")
-            img(src="@/assets/images/home_illustrator_img_show_1.png")
+            img(:src="otherArr[0].coverPic")
           router-link(to="/project_details")
-            img(src="@/assets/images/home_illustrator_img_show_2.png")
+            img(:src="otherArr[1].coverPic")
         .look_second
-          img(src="@/assets/images/home_illustrator_img_show_3.png" @click="goDetailFn")
-        .look_more 
+          img(:src="otherArr[2].coverPic" @click="goDetailFn")
+        .look_more(@click="goOtherFn")
           | 查看更多
           i(class="iconfont iconicon_common_icon_home_turn_in")
       .middle_file
         .look_file 
-          .look_file_list(@click="goDetailFn")
+          .look_file_list(@click="goDetailFn" v-for="item in fileArr" :key="item.id")
             img(src="@/assets/images/icon_common_icon_folder_yellow.png")
-            span 关于弹窗规范的总结
-          .look_file_list(@click="goDetailFn")
-            img(src="@/assets/images/icon_common_icon_folder_green.png")
-            span 关于弹窗规范的总结
-          .look_file_list(@click="goDetailFn")
-            img(src="@/assets/images/icon_common_icon_folder_blue.png")
-            span 关于弹窗规范的总结
-          .look_file_more 
+            span {{item.name}}
+          .look_file_more(@click="goFileFn")
             | 查看更多
             i(class="iconfont iconicon_common_icon_home_turn_in")
       .middle_icon
@@ -77,13 +62,41 @@ export default {
   name: 'home',
   data () {
     return {
+      userName: "",
+      headPic: "",
       info: "做自己的设计，让别人无设计可做",
       footerFont: "谢语：爱就像蓝天白云",
+      projectArr: [],
+      otherArr: [],
+      fileArr: []
     }
+  },
+  created() {
+    this.axios.get(this.hostName+'/home/datas').then((res)=>{
+      this.userName = res.data.data.users[0].nickName
+      this.info = res.data.data.users[0].motto
+      this.footerFont = res.data.data.users[0].thanking
+      this.headPic = res.data.data.users[0].headPic
+      this.projectArr = res.data.data.project
+      this.otherArr = res.data.data.other
+      this.fileArr = res.data.data.file
+      this.fileArr[0].webIcon = "@/assets/images/icon_common_icon_folder_yellow.png"
+      this.fileArr[1].webIcon = "@/assets/images/icon_common_icon_folder_green.png"
+      this.fileArr[2].webIcon = "@/assets/images/icon_common_icon_folder_blue.png"
+      // console.log(this.fileArr)
+    }).catch((err)=>{
+      console.error("请联系管理员，开斌刘")
+    })
   },
   methods: {
     goDetailFn() {
       this.$router.push('/project_details')
+    },
+    goOtherFn() {
+      this.$router.push('/other')
+    },
+    goFileFn() {
+      this.$router.push('/file')
     }
   }
 }
@@ -110,7 +123,7 @@ export default {
             img {
               width: 100%;
               height: 100%;
-              // border-radius: 90px;
+              border-radius: 90px;
             }
           }
           .user_left_name {
