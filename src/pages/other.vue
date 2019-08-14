@@ -13,12 +13,13 @@
           :title="item"
         )
           img(src="@/assets/images/img_common_show_img_6.png")
-      .footer_font {{footerFont}}
+      Bottom
 </template>
 <script>
 import Bread from "../components/bread"
+import Bottom from "../components/thanking"
 export default {
-  components: { Bread },
+  components: { Bread,Bottom },
   name: 'other',
   data () {
     return {
@@ -28,11 +29,19 @@ export default {
       list: []
     }
   },
+  created() {
+    this.axios.get(this.hostName+'/personal/datas').then((res)=>{
+      this.name = res.data.data[0].logoName
+    }).catch((err)=>{
+      console.error("请联系管理员，开斌刘")
+    })
+  },
   methods: {
     goDetailFn() {
       this.$router.push('/project_details')
     },
     onLoad() {
+      console.log('666');
       // 异步更新数据
       setTimeout(() => {
         for (let i = 0; i < 2; i++) {
@@ -76,14 +85,6 @@ export default {
         &:nth-of-type(1) {
           margin-top: 0vw;
         }
-      }
-      // 谢语
-      .footer_font {
-        margin-top: 15vw;
-        text-align: center;
-        color: #676B78;
-        letter-spacing: 1.11px;
-        font-size: 3vw;
       }
     }
 </style>

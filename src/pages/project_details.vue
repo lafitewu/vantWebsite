@@ -19,12 +19,13 @@
           .middle_pic_info 模块{{item}}简单介绍
           .middle_pic_main
             img(src="@/assets/images/pro_detail_page_1.png")
-      .footer_font {{footerFont}}
+      Bottom
 </template>
 <script>
 import Bread from "../components/bread"
+import Bottom from "../components/thanking"
 export default {
-  components: { Bread },
+  components: { Bread,Bottom },
   name: 'details',
   data () {
     return {
@@ -122,14 +123,6 @@ export default {
           &:nth-of-type(1) {
             margin-top: 11vw;
           }
-        }
-        // 谢语
-        .footer_font {
-          margin-top: 15vw;
-          text-align: center;
-          color: #676B78;
-          letter-spacing: 1.11px;
-          font-size: 3vw;
         }
       }
     }

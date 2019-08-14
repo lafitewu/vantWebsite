@@ -52,13 +52,14 @@
           i(class="iconfont iconicon_common_icon_home_dribbble icon1")
           i(class="iconfont iconicon_common_icon_home_behance icon2")
           i(class="iconfont iconicon_common_icon_home_zcool icon3")
-      .footer_font {{footerFont}}
+      Bottom
 </template>
 <script>
 import Bread from "../components/bread"
+import Bottom from "../components/thanking"
 
 export default {
-  components: { Bread },
+  components: { Bread,Bottom },
   name: 'home',
   data () {
     return {
@@ -321,14 +322,6 @@ export default {
               color: #F5A623;
             }
           } 
-        }
-        // 谢语
-        .footer_font {
-          margin-top: 15vw;
-          text-align: center;
-          color: #676B78;
-          letter-spacing: 1.11px;
-          font-size: 3vw;
         }
       }
     }

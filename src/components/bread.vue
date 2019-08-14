@@ -26,13 +26,23 @@ export default {
     }
   },
   created() {
-    this.axios.get(this.hostName+'/personal/datas').then((res)=>{
-      this.name = res.data.data[0].logoName
-    }).catch((err)=>{
-      console.error("请联系管理员，开斌刘")
-    })
+    this.Init()
   },
   methods: {
+    Init() {
+      if(!sessionStorage.getItem("logoName")) {
+        this.axios.get(this.hostName+'/personal/datas').then((res)=>{
+          this.name = res.data.data[0].logoName
+          // 缓存
+          sessionStorage.setItem("logoName",this.name)
+          sessionStorage.setItem("thanking",res.data.data[0].thanking)
+        }).catch((err)=>{
+          console.error("请联系管理员，开斌刘")
+        })
+      }else {
+        this.name = sessionStorage.getItem("logoName")
+      }
+    },
     showPopup() {
       this.popupShow = true
     }

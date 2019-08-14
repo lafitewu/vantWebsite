@@ -84,12 +84,13 @@
                   img(src="@/assets/images/home_default_header_1.png")
               .middle_list_pic
                   img(src="@/assets/images/home_bg_img_show_1.png")
-      .footer_font {{footerFont}}
+      Bottom
 </template>
 <script>
 import Bread from "../components/bread"
+import Bottom from "../components/thanking"
 export default {
-  components: { Bread },
+  components: { Bread,Bottom },
   name: 'project',
   data () {
     return {
@@ -232,14 +233,6 @@ export default {
             margin-top: 0; 
           }
         }
-        }
-        // 谢语
-        .footer_font {
-          margin-top: 15vw;
-          text-align: center;
-          color: #676B78;
-          letter-spacing: 1.11px;
-          font-size: 3vw;
         }
       }
     }

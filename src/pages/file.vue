@@ -15,13 +15,13 @@
           .middle_file_list_main
             img(src="@/assets/images/icon_common_icon_folder_yellow.png")
             .middle_list_main_info 关于banner{{item}}的测试结果(搬运工)
-      .footer_font {{footerFont}}
+      Bottom
 </template>
 <script>
 import Bread from "../components/bread"
-
+import Bottom from "../components/thanking"
 export default {
-  components: { Bread },
+  components: { Bread,Bottom },
   name: 'file',
   data () {
     return {
@@ -100,14 +100,6 @@ export default {
         &:nth-of-type(1) {
             margin-top: 0;
           }
-      }
-      // 谢语
-      .footer_font {
-        margin-top: 15vw;
-        text-align: center;
-        color: #676B78;
-        letter-spacing: 1.11px;
-        font-size: 3vw;
       }
     }
 </style>
