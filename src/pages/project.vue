@@ -6,84 +6,76 @@
         van-tabs(v-model="active" animated title-active-color="#242837" title-inactive-color="#676B78")
           van-tab(title="App") 
             van-list(
-            v-model="loading"
             :finished="finished"
-            @load="onLoad")
+            )
             .middle_list(
               @click="goDetailFn"
-              v-for="item in list"
-              :key="item"
-              :title="item"
+              v-for="item in app_list"
+              :key="item.id"
             )
               .middle_list_top
                 .list_top_left
                   .top_left_main
-                    .left_main_title 项目{{item}}名称
-                    .left_main_info 项目{{item}}简单介绍
+                    .left_main_title {{item.name}}
+                    .left_main_info {{item.intro}}
                 .list_top_right
-                  img(src="@/assets/images/home_default_header_2.png")
+                  img(:src="item.icon")
               .middle_list_pic
-                  img(src="@/assets/images/home_bg_img_show_2.png")
+                  img(:src="item.coverPic")
           van-tab(title="Web")
             van-list(
-            v-model="loading"
             :finished="finished"
-            @load="onLoad")
+            )
             .middle_list(
               @click="goDetailFn"
-              v-for="item in list"
-              :key="item"
-              :title="item"
+              v-for="item in web_list"
+              :key="item.id"
             )
               .middle_list_top
                 .list_top_left
                   .top_left_main
-                    .left_main_title 项目{{item}}名称
-                    .left_main_info 项目{{item}}简单介绍
+                    .left_main_title {{item.name}}
+                    .left_main_info {{item.intro}}
                 .list_top_right
-                  img(src="@/assets/images/home_default_header_1.png")
+                  img(:src="item.icon")
               .middle_list_pic
-                  img(src="@/assets/images/home_bg_img_show_3.png")
+                  img(:src="item.coverPic")
           van-tab(title="小程序")
             van-list(
-            v-model="loading"
             :finished="finished"
-            @load="onLoad")
+            )
             .middle_list(
               @click="goDetailFn"
-              v-for="item in list"
-              :key="item"
-              :title="item"
+              v-for="item in mini_list"
+              :key="item.id"
             )
               .middle_list_top
                 .list_top_left
                   .top_left_main
-                    .left_main_title 项目{{item}}名称
-                    .left_main_info 项目{{item}}简单介绍
+                    .left_main_title {{item.name}}
+                    .left_main_info {{item.intro}}
                 .list_top_right
-                  img(src="@/assets/images/home_default_header_3.png")
+                  img(:src="item.icon")
               .middle_list_pic
-                  img(src="@/assets/images/home_bg_img_show_3.png")
+                  img(:src="item.coverPic")
           van-tab(title="其他")
             van-list(
-            v-model="loading"
             :finished="finished"
-            @load="onLoad")
+            )
             .middle_list(
               @click="goDetailFn"
-              v-for="item in list"
-              :key="item"
-              :title="item"
+              v-for="item in other_list"
+              :key="item.id"
             )
               .middle_list_top
                 .list_top_left
                   .top_left_main
-                    .left_main_title 项目{{item}}名称
-                    .left_main_info 项目{{item}}简单介绍
+                    .left_main_title {{item.name}}
+                    .left_main_info {{item.intro}}
                 .list_top_right
-                  img(src="@/assets/images/home_default_header_1.png")
+                  img(:src="item.icon")
               .middle_list_pic
-                  img(src="@/assets/images/home_bg_img_show_1.png")
+                  img(:src="item.coverPic")
       Bottom
 </template>
 <script>
@@ -98,9 +90,30 @@ export default {
       footerFont: "谢语：爱就像蓝天白云",
       loading: false,
       finished: false,
-      list: [],
+      app_list: [],
+      web_list: [],
+      mini_list: [],
+      other_list: [],
       active: 0
     }
+  },
+  created() {
+    this.axios.get(this.hostName+'/project/datas').then((res)=>{
+      var Len = res.data.data.length
+      for(var i = 0; i < Len; i++) {
+        if(res.data.data[i].type == 0) {
+          this.app_list.push(res.data.data[i])
+        }else if(res.data.data[i].type == 1) {
+          this.web_list.push(res.data.data[i])
+        }else if(res.data.data[i].type == 2) {
+          this.mini_list.push(res.data.data[i])
+        }else {
+          this.other_list.push(res.data.data[i])
+        }
+      }
+    }).catch((err)=>{
+      console.error("请联系管理员，开斌刘")
+    })
   },
   methods: {
     goDetailFn() {

@@ -9,12 +9,11 @@
         .middle_file_list(
           @click="goDetailFn"
           v-for="item in list"
-          :key="item"
-          :title="item"
+          :key="item.id"
         )
           .middle_file_list_main
-            img(src="@/assets/images/icon_common_icon_folder_yellow.png")
-            .middle_list_main_info 关于banner{{item}}的测试结果(搬运工)
+            img(:src="item.coverPic")
+            .middle_list_main_info {{item.name}}
       Bottom
 </template>
 <script>
@@ -31,6 +30,14 @@ export default {
       list: []
     }
   },
+  created() {
+    this.axios.get(this.hostName+'/file/datas').then((res)=>{
+      this.list = res.data.data
+      console.log(res.data.data)
+    }).catch((err)=>{
+      console.error("请联系管理员，开斌刘")
+    })
+  },
   methods: {
     goDetailFn() {
       this.$router.push('/project_details')
@@ -39,13 +46,13 @@ export default {
       // 异步更新数据
       setTimeout(() => {
         for (let i = 0; i < 2; i++) {
-          this.list.push(this.list.length + 1);
+          // this.list.push(this.list.length + 1);
         }
         // 加载状态结束
         this.loading = false;
 
         // 数据全部加载完成
-        if (this.list.length >= 10) {
+        if (this.list.length) {
           this.finished = true;
         }
       }, 500);

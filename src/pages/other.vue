@@ -3,16 +3,16 @@
     Bread
     .middle
       van-list(
+        v-if="list"
         v-model="loading"
         :finished="finished"
         @load="onLoad")
         .middle_pic_list(
           @click="goDetailFn"
           v-for="item in list"
-          :key="item"
-          :title="item"
+          :key="item.id"
         )
-          img(src="@/assets/images/img_common_show_img_6.png")
+          img(:src="item.coverPic")
       Bottom
 </template>
 <script>
@@ -30,8 +30,9 @@ export default {
     }
   },
   created() {
-    this.axios.get(this.hostName+'/personal/datas').then((res)=>{
-      this.name = res.data.data[0].logoName
+    this.axios.get(this.hostName+'/other/datas').then((res)=>{
+      this.list = res.data.data
+      console.log(this.list)
     }).catch((err)=>{
       console.error("请联系管理员，开斌刘")
     })
@@ -45,13 +46,13 @@ export default {
       // 异步更新数据
       setTimeout(() => {
         for (let i = 0; i < 2; i++) {
-          this.list.push(this.list.length + 1);
+          // this.list.push(this.list.length + 1);
         }
         // 加载状态结束
         this.loading = false;
 
         // 数据全部加载完成
-        if (this.list.length >= 10) {
+        if (this.list.length) {
           this.finished = true;
         }
       }, 500);
