@@ -17,7 +17,7 @@
             img(src="@/assets/images/home_default_header_1.png")
         .middle_list_pic
           video(src="http://clips.vorwaerts-gmbh.de/big_buck_bunny.mp4" controls="controls" poster="@/assets/images/home_bg_img_show_1.png")
-      .middle_list.middle_list2(@click="goDetailFn" v-for="item in projectArr" :key="item.id")
+      .middle_list.middle_list2(@click="goDetailFn(item)" v-for="item in projectArr" :key="item.id")
         .middle_list_top
           .list_top_left
             .top_left_main
@@ -30,11 +30,11 @@
    
       .middle_look(v-if="otherArr.length")
         .look_frist
-          router-link(to="/project_details")
+          router-link(v-if="otherArr.length > 0" :to="{path: '/project_details',query: {id: otherArr[0].id}}")
             img(:src="otherArr[0].coverPic")
-          router-link(to="/project_details")
+          router-link(v-if="otherArr.length > 1" :to="{path: '/project_details',query: {id: otherArr[1].id}}")
             img(:src="otherArr[1].coverPic")
-        .look_second
+        .look_second(v-if="otherArr.length > 2")
           img(:src="otherArr[2].coverPic" @click="goDetailFn")
         .look_more(@click="goOtherFn")
           | 查看更多
@@ -84,14 +84,14 @@ export default {
       this.fileArr[0].webIcon = "@/assets/images/icon_common_icon_folder_yellow.png"
       this.fileArr[1].webIcon = "@/assets/images/icon_common_icon_folder_green.png"
       this.fileArr[2].webIcon = "@/assets/images/icon_common_icon_folder_blue.png"
-      // console.log(this.fileArr)
     }).catch((err)=>{
       console.error("请联系管理员，开斌刘")
     })
   },
   methods: {
-    goDetailFn() {
-      this.$router.push('/project_details')
+    goDetailFn(val) {
+      console.log(val)
+      // this.$router.push('/project_details')
     },
     goOtherFn() {
       this.$router.push('/other')

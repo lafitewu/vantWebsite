@@ -3,22 +3,22 @@
     Bread
     .middle
       .middle_username
-        .user_left_name 项目的名称
+        .user_left_name {{name}}
         .user_left_info {{info}}
       van-list(
-        v-model="loading"
+        
         :finished="finished"
         finished-text="没有更多了"
         @load="onLoad")
         .middle_pic(
-          v-for="item in list"
-          :key="item"
+          v-for="(item,index) in list"
+          :key="item.info"
           :title="item"
         )
-          .middle_pic_title 标题{{item}}
-          .middle_pic_info 模块{{item}}简单介绍
-          .middle_pic_main
-            img(src="@/assets/images/pro_detail_page_1.png")
+          .middle_pic_title {{item.title}}
+          .middle_pic_info {{item.info}}
+          .middle_pic_main(v-for="items in list[index].picList" :key="items")
+            img(:src="items")
       Bottom
 </template>
 <script>
@@ -29,6 +29,7 @@ export default {
   name: 'details',
   data () {
     return {
+      name: "",
       info: "项目简单的介绍",
       footerFont: "谢语：爱就像蓝天白云",
       loading: false,
@@ -36,24 +37,52 @@ export default {
       list: []
     }
   },
+  created() {
+    this.initFn()
+  },
   methods: {
+    // 详情页面初始化
+    initFn() {
+      this.axios.get(this.hostName+'/details/data',
+      {
+        params: {
+          id: this.$route.query.id
+        }
+      }).then((res)=>{
+        console.log(res.data.data[0])
+        var Len = res.data.data[0].detailInfo.split('&&').length - 1
+        this.name = res.data.data[0].projectName
+        this.info = res.data.data[0].projectInfo
+        for(var i = 0; i < Len; i++) {
+          this.list[i] = {
+            title: res.data.data[0].detailName.split('&&')[i],
+            info: res.data.data[0].detailInfo.split('&&')[i],
+            picList: res.data.data[0].detailPicList.split('&&')[i],
+          }
+          this.list[i].picList = this.list[i].picList.split(',')
+        }
+        console.log(this.list)
+      }).catch((err)=>{
+        console.error("请联系管理员，开斌刘")
+      })
+    },
     showPopup() {
       this.popupShow = true
     },
     onLoad() {
       // 异步更新数据
-      setTimeout(() => {
-        for (let i = 0; i < 2; i++) {
-          this.list.push(this.list.length + 1);
-        }
-        // 加载状态结束
-        this.loading = false;
+      // setTimeout(() => {
+      //   for (let i = 0; i < 2; i++) {
+      //     this.list.push(this.list.length + 1);
+      //   }
+      //   // 加载状态结束
+      //   this.loading = false;
 
-        // 数据全部加载完成
-        if (this.list.length >= 10) {
-          this.finished = true;
-        }
-      }, 500);
+      //   // 数据全部加载完成
+      //   if (this.list.length >= 10) {
+      //     this.finished = true;
+      //   }
+      // }, 500);
     }
   }
 }
@@ -94,7 +123,7 @@ export default {
         }
         .middle_pic {
           width: 92%;
-          height: 79.5vw;
+          min-height: 79.5vw;
           margin: auto;
           margin-top: 5vw;
           .middle_pic_title {
@@ -110,11 +139,11 @@ export default {
             letter-spacing: 0.43px;
             text-indent: 5vw;
             margin-top: 1vw;
+            margin-bottom: 4vw;
           }
           .middle_pic_main {
             width: 100%;
             height: 65vw;
-            margin-top: 4vw;
             img {
               width: 100%;
               height: 100%;

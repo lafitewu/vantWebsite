@@ -16,7 +16,7 @@
               .middle_list_top
                 .list_top_left
                   .top_left_main
-                    .left_main_title {{item.name}}
+                    .left_main_title {{item.title}}
                     .left_main_info {{item.intro}}
                 .list_top_right
                   img(:src="item.icon")
@@ -34,7 +34,7 @@
               .middle_list_top
                 .list_top_left
                   .top_left_main
-                    .left_main_title {{item.name}}
+                    .left_main_title {{item.title}}
                     .left_main_info {{item.intro}}
                 .list_top_right
                   img(:src="item.icon")
@@ -52,7 +52,7 @@
               .middle_list_top
                 .list_top_left
                   .top_left_main
-                    .left_main_title {{item.name}}
+                    .left_main_title {{item.title}}
                     .left_main_info {{item.intro}}
                 .list_top_right
                   img(:src="item.icon")
@@ -70,7 +70,7 @@
               .middle_list_top
                 .list_top_left
                   .top_left_main
-                    .left_main_title {{item.name}}
+                    .left_main_title {{item.title}}
                     .left_main_info {{item.intro}}
                 .list_top_right
                   img(:src="item.icon")
