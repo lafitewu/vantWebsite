@@ -9,7 +9,7 @@
             :finished="finished"
             )
             .middle_list(
-              @click="goDetailFn"
+              @click="goDetailFn(item)"
               v-for="item in app_list"
               :key="item.id"
             )
@@ -27,7 +27,7 @@
             :finished="finished"
             )
             .middle_list(
-              @click="goDetailFn"
+              @click="goDetailFn(item)"
               v-for="item in web_list"
               :key="item.id"
             )
@@ -45,7 +45,7 @@
             :finished="finished"
             )
             .middle_list(
-              @click="goDetailFn"
+              @click="goDetailFn(item)"
               v-for="item in mini_list"
               :key="item.id"
             )
@@ -63,7 +63,7 @@
             :finished="finished"
             )
             .middle_list(
-              @click="goDetailFn"
+              @click="goDetailFn(item)"
               v-for="item in other_list"
               :key="item.id"
             )
@@ -116,8 +116,8 @@ export default {
     })
   },
   methods: {
-    goDetailFn() {
-      this.$router.push('/project_details')
+    goDetailFn(val) {
+      this.$router.push({path: '/project_details',query: {id: val.id}})
     },
     onLoad() {
       // 异步更新数据

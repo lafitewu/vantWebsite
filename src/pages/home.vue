@@ -35,13 +35,13 @@
           router-link(v-if="otherArr.length > 1" :to="{path: '/project_details',query: {id: otherArr[1].id}}")
             img(:src="otherArr[1].coverPic")
         .look_second(v-if="otherArr.length > 2")
-          img(:src="otherArr[2].coverPic" @click="goDetailFn")
+          img(:src="otherArr[2].coverPic" @click="goDetailFn(otherArr[2])")
         .look_more(@click="goOtherFn")
           | 查看更多
           i(class="iconfont iconicon_common_icon_home_turn_in")
       .middle_file
         .look_file 
-          .look_file_list(@click="goDetailFn" v-for="item in fileArr" :key="item.id")
+          .look_file_list(@click="goDetailFn(item)" v-for="item in fileArr" :key="item.id")
             img(src="@/assets/images/icon_common_icon_folder_yellow.png")
             span {{item.name}}
           .look_file_more(@click="goFileFn")
@@ -90,8 +90,8 @@ export default {
   },
   methods: {
     goDetailFn(val) {
-      console.log(val)
-      // this.$router.push('/project_details')
+      console.log(val.id)
+      this.$router.push({path: '/project_details',query: {id: val.id}})
     },
     goOtherFn() {
       this.$router.push('/other')

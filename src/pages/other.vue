@@ -8,7 +8,7 @@
         :finished="finished"
         @load="onLoad")
         .middle_pic_list(
-          @click="goDetailFn"
+          @click="goDetailFn(item)"
           v-for="item in list"
           :key="item.id"
         )
@@ -38,8 +38,8 @@ export default {
     })
   },
   methods: {
-    goDetailFn() {
-      this.$router.push('/project_details')
+    goDetailFn(val) {
+      this.$router.push({path: '/project_details',query: {id: val.id}})
     },
     onLoad() {
       console.log('666');
