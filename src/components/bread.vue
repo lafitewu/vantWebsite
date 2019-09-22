@@ -13,7 +13,7 @@
         router-link(to="/") 首页
         router-link(to="/project") 项目
         router-link(to="/other") 其他
-        router-link(to="/file") 文档
+        router-link(to="/file") 思考
 </template>
 
 <script>
